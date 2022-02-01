@@ -48,17 +48,18 @@ En la Url de la petición, se pueden incluir los siguientes parámetros opcional
 **Datos de Respuesta**
 
 Este endpoint retorna una lista de canales de contenido. Los datos de cada canal son:
-| Campo | Tipo | Descripción |
-| :---------- | :------- | :--------------------------- |
-| `title` | `string` | Nombre del video. |
-| `key` | `string` | Clave del video. |
-| `description` | `string` | Descripción del video. |
-| `thumbnail` | `string` | Imagen del video. |
-| `video` | `string` | Video del video. |
-| `type` | `string` | Tipo de video. |
-| `cost` | `string` | Costo del video. |
-| `comments_count` | `integer` | Cantidad de comentarios. |
-| `reviews_count` | `integer` | Cantidad de reviews. |
-| `review_valoration` | `integer` | Valoración de reviews. |
-| `created_at` | `string` | Fecha de creación. |
-| `updated_at` | `string` | Fecha de actualización. |
+
+| Campo               | Tipo      | Descripción              |
+| :------------------ | :-------- | :----------------------- |
+| `title`             | `string`  | Nombre del video.        |
+| `key`               | `string`  | Clave del video.         |
+| `description`       | `string`  | Descripción del video.   |
+| `thumbnail`         | `string`  | Imagen del video.        |
+| `video`             | `string`  | Video del video.         |
+| `type`              | `string`  | Tipo de video.           |
+| `cost`              | `string`  | Costo del video.         |
+| `comments_count`    | `integer` | Cantidad de comentarios. |
+| `reviews_count`     | `integer` | Cantidad de reviews.     |
+| `review_valoration` | `integer` | Valoración de reviews.   |
+| `created_at`        | `string`  | Fecha de creación.       |
+| `updated_at`        | `string`  | Fecha de actualización.  |
