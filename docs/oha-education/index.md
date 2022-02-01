@@ -20,6 +20,10 @@ En las llamadas a la API de REST, incluya la URL del servicio de la API para el 
 - [Obtener un canal](channels/details.md) : `GET /channels/{username}/`
 - [Crear un canal](channels/create.md) : `POST /channels/`
 - [Actualizar un canal](channels/update.md) : `PUT /channels/{username}/`
+#### Suscripción a un canal
+- [Listar suscripciones](channels/subscribers/list.md) : `GET /channels/{username}/subscribers/`
+- [Suscribirse a un canal](channels/subscribers/create.md) : `POST /channels/{username}/subscribers/`
+- [Desuscribirse a un canal](channels/subscribers/delete.md) : `DELETE /channels/{username}/subscribers/`
 
 ### Videos
 - [Listar](videos/list.md) : `GET /videos/`
