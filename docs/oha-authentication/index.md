@@ -19,4 +19,4 @@ En las llamadas a la API de REST, incluya la URL del servicio de la API para el 
 ### Usuarios
 - [Obtener Usuario](users/profile-retrieve.md): `GET /users/{username}/`
 - [Actualizar Usuario](users/profile-update.md): `PUT /users/{username}/`
-- [Actualizar foto de Perfil](users/profile-update-photo.md): `PUT /users/{username}/photo/`
+- [Actualizar foto de Perfil](users/profile-photo-update.md): `PUT /users/{username}/photo/`
