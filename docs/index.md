@@ -4,7 +4,7 @@
 ## Tabla de contenidos:
 ---
 - [Descripción y contexto](#descripción-y-contexto)
-- [Documentación de la API](#documentación-de-la-api)
+- [Documentación de la API](api.md)
 - [Requests](request.md)
 - [Responses](response.md)
 

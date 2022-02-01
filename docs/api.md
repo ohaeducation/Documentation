@@ -3,5 +3,5 @@
 
 ## Documentaciones Disponibles:
 
-- [Oha Authentication]()
-- [Oha Education]()
+- [Oha Authentication](oha-authentication/index.md)
+- [Oha Education](oha-education/index.md)
