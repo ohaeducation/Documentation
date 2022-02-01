@@ -13,7 +13,7 @@ En las llamadas a la API de REST, incluya la URL del servicio de la API para el 
 
 ### Autenticación y Registro
 
-- [Token](auth/login.md) : `POST /token/`
+- [Token](users/login.md) : `POST /token/`
 
 ### Canal de contenido
 - [Listar](channels/list.md) : `GET /channels/`
