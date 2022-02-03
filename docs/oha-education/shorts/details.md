@@ -1,6 +1,6 @@
-# Obtención de un Video
+# Obtención del Perfil
 
-> Este endpoint se encarga de retornar un video
+> Este endpoint se encarga de retornar el perfil de un canal.
 
 |       URL        | Método |   Tipo de Medio    | Autorización Requerida |
 | :--------------: | :----: | :----------------: | ---------------------- |

@@ -28,3 +28,7 @@ En las llamadas a la API de REST, incluya la URL del servicio de la API para el 
 ### Videos
 - [Listar](videos/list.md) : `GET /videos/`
 - [Obtener un video](videos/details.md) : `GET /videos/{key}/`
+
+### Shorts
+- [Listar](shorts/list.md) : `GET /shorts/`
+- [Obtener un short](shorts/details.md) : `GET /shorts/{key}/`
