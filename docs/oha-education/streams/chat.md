@@ -6,44 +6,73 @@
 | :---------------: | :---------: | :----------------: | ---------------------- |
 | `/streams/{key}/` | `WEBSOCKET` | `application/json` | `Opcional`             |
 
-## Parámetros Opcionales
-
-En la Url de la petición, se pueden incluir los siguientes parámetros opcionales:
-
-| Parametro | Tipo     | Descripción             |
-| :-------- | :------- | :---------------------- |
-| `token`   | `string` | Permite Iniciar Sesión. |
-
 ## Uso
 
 Se necesita el utilizar via una libreria de WebSockets.
-Ejemplo:
+Ejemplo: Usando [ws](https://www.npmjs.com/package/ws)
 
 ```js
-const url = "wss://api.oha.education/ws/streams/qB-TJaGTR_kjWE4w388KEQ/"; // URL del Stream
-const ws = new WebSocket(url);
+const { WebSocket } = require("ws");
 
-ws.onopen = () => {
-	// Cuando se conecta al chat
-	console.log("Connected to server");
+const ws = new WebSocket("wss://api.oha.education/ws/streams/uFXHjP-sUukXUh8gw-S3yw/", [], {
+	headers: {
+		"Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImNhcmxvc29zdW5hMTEiLCJpYXQiOjE2NDQ1Mjg1NTYsImV4cCI6MTY0NDUzMjE1NiwianRpIjoiNGE5MzhkMmYtYjVhOS00ZWQyLWEzMTEtZmE5YTNhZDNlZTQzIiwidXNlcl9pZCI6MSwib3JpZ19pYXQiOjE2NDQ1Mjg1NTZ9.e5T867YIyC8JtO79Dy63OHyc78LcF_a0eHN9Xtd0ohc",
+	},
+});
+
+ws.onopen = function (e) {
+	console.log("Successfully connected to the WebSocket.");
+    send_message("chat", "hola");
 };
 
-ws.onmessage = (event) => {
-	// Cuando recibe un mensaje
-	console.log(event.data);
+ws.onclose = function (e) {
+	console.log("Successfully disconnected");
 };
 
-ws.onclose = () => {
-	// Cuando se desconecta del chat
-	console.log("Disconnected from server");
+ws.onerror = function (err) {
+    console.log("WebSocket encountered an error: " + err.message);
+    console.log("Closing the socket.");
+    ws.close();
+}
+
+ws.onmessage = function (e) {
+	const data = JSON.parse(e.data);
+	console.log(data);
 };
+
+const send_message = (type, message) => {
+	ws.send(
+		JSON.stringify({
+			type,
+			"data": {
+				message,
+			},
+		})
+	);
+};
+
 ```
 
-### Tipos de Mensajes
+### Tipos de mensajes que se pueden enviar
 
 #### Mensaje de Chat
 
-Este es el mensaje más usual que se envía al chat. Es el que usan los usuarios para enviar/reciber mensajes. dentro del chat del stream.
+Se utiliza para enviar mensajes de chat.
+
+```json
+{
+    "type": "chat",
+    "data": {
+        "message": "hola",
+    }
+}
+```
+
+### Tipos de Mensajes Recibidos
+
+#### Mensaje de Chat
+
+Este es el mensaje más usual que se recibe. Es el que usan los usuarios para enviar/reciber mensajes. dentro del chat del stream.
 
 ```json
 {
