@@ -15,6 +15,8 @@ En la Url de la petición, se pueden incluir los siguientes parámetros opcional
 | `channel` | `string`  | Permite filtrar streams en función de un canal.                                             |
 | `live`    | `boolean` | Permite filtrar streams en función de si están en vivo o no.                                |
 | `search`  | `string`  | Permite buscar un Stream en función de una palabra. Este hará match con el nombre del canal |
+| `limit`   | `integer` | Permite limitar la cantidad de streams que se devuelven.                                    |
+| `offset`  | `integer` | Permite paginar los streams.                                                                |
 
 ## Respuesta
 
@@ -25,27 +27,57 @@ En la Url de la petición, se pueden incluir los siguientes parámetros opcional
 **Content example**
 
 ```json
-[
-	{
-		"key": "qB-TJaGTR_kjWE4w388KEQ",
-		"thumbnail": "https://api.oha.education/live/qB-TJaGTR_kjWE4w388KEQ/thumbnail.png",
-		"video": {
-			"index": "https://api.oha.education/live/qB-TJaGTR_kjWE4w388KEQ/index.m3u8",
-			"720p2628kbs": "https://api.oha.education/live/qB-TJaGTR_kjWE4w388KEQ/index_720p2628kbs/index.m3u8",
-			"480p1128kbs": "https://api.oha.education/live/qB-TJaGTR_kjWE4w388KEQ/index_480p1128kbs/index.m3u8",
-			"360p878kbs": "https://api.oha.education/live/qB-TJaGTR_kjWE4w388KEQ/index_360p878kbs/index.m3u8",
-			"240p528kbs": "https://api.oha.education/live/qB-TJaGTR_kjWE4w388KEQ/index_240p528kbs/index.m3u8",
-			"240p264kbs": "https://api.oha.education/live/qB-TJaGTR_kjWE4w388KEQ/index_240p264kbs/index.m3u8"
+{
+	"count": 4,
+	"next": null,
+	"previous": null,
+	"results": [
+		{
+			"key": "vX9aaiOppS623DS9UrMtxA",
+			"thumbnail": "https://res.cloudinary.com/ds1cdo5lx/image/upload/v1644619583/channels/streams/thumbnails/NDE32uMhEJG7LLJcbVjO7w.png",
+			"video": "https://res.cloudinary.com/ds1cdo5lx/video/upload/v1644619581/channels/streams/NDE32uMhEJG7LLJcbVjO7w.mp4",
+			"author": "carlososuna11",
+			"created_at": "2022-02-11T18:10:17.402437-04:00",
+			"stopped_at": "2022-02-11T18:13:34.324270-04:00"
 		},
-		"author": "carlososuna11",
-		"chat": "wss://api.oha.education/ws/streams/qB-TJaGTR_kjWE4w388KEQ/",
-		"created_at": "2022-02-10T13:06:17.754620-04:00",
-		"stopped_at": null
-	}
-]
+		{
+			"key": "2u18-bmXxthsLFJ2VQftsQ",
+			"thumbnail": "https://res.cloudinary.com/ds1cdo5lx/image/upload/v1644617025/channels/streams/thumbnails/XB767nHcwPVCFGNJ5pJPSQ.png",
+			"video": "https://res.cloudinary.com/ds1cdo5lx/video/upload/v1644617023/channels/streams/XB767nHcwPVCFGNJ5pJPSQ.mp4",
+			"author": "carlososuna11",
+			"created_at": "2022-02-11T17:41:02.513086-04:00",
+			"stopped_at": "2022-02-11T17:46:14.394355-04:00"
+		},
+		{
+			"key": "eE3UYo_y1Y3SpEI-uv9DFA",
+			"thumbnail": "https://res.cloudinary.com/ds1cdo5lx/image/upload/v1644604066/channels/streams/thumbnails/eE3UYo_y1Y3SpEI-uv9DFA.png",
+			"video": "https://res.cloudinary.com/ds1cdo5lx/video/upload/v1644604064/channels/streams/eE3UYo_y1Y3SpEI-uv9DFA.mp4",
+			"author": "carlososuna11",
+			"created_at": "2022-02-11T14:25:36.115515-04:00",
+			"stopped_at": "2022-02-11T14:27:07.325758-04:00"
+		},
+		{
+			"key": "EprLVq6XNQqovWmB3mPMtw",
+			"thumbnail": "https://res.cloudinary.com/ds1cdo5lx/image/upload/v1644603133/channels/streams/thumbnails/EprLVq6XNQqovWmB3mPMtw.png",
+			"video": "https://res.cloudinary.com/ds1cdo5lx/video/upload/v1644603131/channels/streams/EprLVq6XNQqovWmB3mPMtw.mp4",
+			"author": "carlososuna11",
+			"created_at": "2022-02-11T14:11:11.235100-04:00",
+			"stopped_at": "2022-02-11T15:03:54.574801-04:00"
+		}
+	]
+}
 ```
 
 **Datos de Respuesta**
+
+campos de respuesta del paginador
+
+|   Campo    |   Tipo   |        Descripción         |
+| :--------: | :------: | :------------------------: |
+|  `count`   |  `int`   |    Número de resultados    |
+|   `next`   | `string` | URL de la siguiente página |
+| `previous` | `string` | URL de la página anterior  |
+| `results`  |  `list`  |      Lista de Streams      |
 
 Este endpoint retorna una lista de Streams. Los datos de cada stream varia según si está en vivo o no.
 
