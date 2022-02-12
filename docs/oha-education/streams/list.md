@@ -10,10 +10,11 @@
 
 En la Url de la petición, se pueden incluir los siguientes parámetros opcionales:
 
-| Parametro | Tipo     | Descripción                                                                                 |
-| :-------- | :------- | :------------------------------------------------------------------------------------------ |
-| `channel` | `string` | Permite filtrar shorts en función de un canal.                                              |
-| `search`  | `string` | Permite buscar un Stream en función de una palabra. Este hará match con el nombre del canal |
+| Parametro | Tipo      | Descripción                                                                                 |
+| :-------- | :-------- | :------------------------------------------------------------------------------------------ |
+| `channel` | `string`  | Permite filtrar streams en función de un canal.                                             |
+| `live`    | `boolean` | Permite filtrar streams en función de si están en vivo o no.                                |
+| `search`  | `string`  | Permite buscar un Stream en función de una palabra. Este hará match con el nombre del canal |
 
 ## Respuesta
 
