@@ -6,13 +6,13 @@ La API de Oha Education es una colección de endpoints de la API que permite int
 
 En las llamadas a la API de REST, incluya la URL del servicio de la API para el entorno:
 
-- Sandbox: `http://18.232.77.138/`.
-- Live: `https://auth.oha.education/`.
+- Sandbox: ``.
+- Live: `https://api.oha.education/`.
 
 En las llamadas a la API de WebSocket, incluya la URL del servicio de la API para el entorno:
 
-- Sandbox: `ws://18.232.77.138/ws/`.
-- Live: `wss://auth.oha.education/ws/`.
+- Sandbox: ``.
+- Live: `wss://api.oha.education/ws/`.
 
 ## Lista de Endpoints API REST
 
@@ -27,11 +27,7 @@ En las llamadas a la API de WebSocket, incluya la URL del servicio de la API par
 - [Crear un canal](channels/create.md) : `POST /channels/`
 - [Actualizar un canal](channels/update.md) : `PUT /channels/{username}/`
 
-### Perfil de Stream (Cofiguracion de Stream)
-
-- [Obtener Perfil de Stream](channels/streams/details.md) : `GET /channels/{username}/stream/`
-
-#### Suscripción a un canal
+### Suscripción a un canal
 
 - [Listar suscripciones](channels/subscribers/list.md) : `GET /channels/{username}/subscribers/`
 - [Suscribirse a un canal](channels/subscribers/create.md) : `POST /channels/{username}/subscribers/`
@@ -47,13 +43,14 @@ En las llamadas a la API de WebSocket, incluya la URL del servicio de la API par
 - [Listar](shorts/list.md) : `GET /shorts/`
 - [Obtener un short](shorts/details.md) : `GET /shorts/{key}/`
 
-### Streams
+### [Streams](streams/index.md)
 
 - [Listar](streams/list.md) : `GET /streams/`
+- [Crear Un Stream](streams/create.md) : `POST /streams/`
 - [Obtener un stream](streams/details.md) : `GET /streams/{key}/`
-
 
 ## Lista de Endpoints API WebSocket
 
 ### Streams
+
 - [Chat](streams/chat.md) : `/streams/{key}/`

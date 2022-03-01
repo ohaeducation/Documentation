@@ -10,13 +10,14 @@
 
 En la Url de la petición, se pueden incluir los siguientes parámetros opcionales:
 
-| Parametro | Tipo      | Descripción                                                                                 |
-| :-------- | :-------- | :------------------------------------------------------------------------------------------ |
-| `channel` | `string`  | Permite filtrar streams en función de un canal.                                             |
-| `live`    | `boolean` | Permite filtrar streams en función de si están en vivo o no.                                |
-| `search`  | `string`  | Permite buscar un Stream en función de una palabra. Este hará match con el nombre del canal |
-| `limit`   | `integer` | Permite limitar la cantidad de streams que se devuelven.                                    |
-| `offset`  | `integer` | Permite paginar los streams.                                                                |
+| Parametro    | Tipo      | Descripción                                                                                                                                                       |
+| :----------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `channel`    | `string`  | Permite filtrar streams en función de un canal.                                                                                                                   |
+| `search`     | `string`  | Permite buscar un Stream en función del título, descripción, nombre de usuario de canal o uid del stream                                                          |
+| `limit`      | `integer` | Permite limitar la cantidad de streams que se devuelven.                                                                                                          |
+| `offset`     | `integer` | Permite paginar los streams.                                                                                                                                      |
+| `status`     | `string`  | Permite filtrar streams en función de su estado. Los estados disponibles son `pending`, `live`, `finished` o `cancel`                                             |
+| `status__in` | `string`  | Permite filtrar streams en función de varios estados. El formato es `status_1,status_2,...`. Los estados disponibles son `pending`, `live`, `finished` o `cancel` |
 
 ## Respuesta
 
@@ -28,41 +29,24 @@ En la Url de la petición, se pueden incluir los siguientes parámetros opcional
 
 ```json
 {
-	"count": 4,
+	"count": 1,
 	"next": null,
 	"previous": null,
 	"results": [
 		{
-			"key": "vX9aaiOppS623DS9UrMtxA",
-			"thumbnail": "https://res.cloudinary.com/ds1cdo5lx/image/upload/v1644619583/channels/streams/thumbnails/NDE32uMhEJG7LLJcbVjO7w.png",
-			"video": "https://res.cloudinary.com/ds1cdo5lx/video/upload/v1644619581/channels/streams/NDE32uMhEJG7LLJcbVjO7w.mp4",
-			"author": "carlososuna11",
-			"created_at": "2022-02-11T18:10:17.402437-04:00",
-			"stopped_at": "2022-02-11T18:13:34.324270-04:00"
-		},
-		{
-			"key": "2u18-bmXxthsLFJ2VQftsQ",
-			"thumbnail": "https://res.cloudinary.com/ds1cdo5lx/image/upload/v1644617025/channels/streams/thumbnails/XB767nHcwPVCFGNJ5pJPSQ.png",
-			"video": "https://res.cloudinary.com/ds1cdo5lx/video/upload/v1644617023/channels/streams/XB767nHcwPVCFGNJ5pJPSQ.mp4",
-			"author": "carlososuna11",
-			"created_at": "2022-02-11T17:41:02.513086-04:00",
-			"stopped_at": "2022-02-11T17:46:14.394355-04:00"
-		},
-		{
-			"key": "eE3UYo_y1Y3SpEI-uv9DFA",
-			"thumbnail": "https://res.cloudinary.com/ds1cdo5lx/image/upload/v1644604066/channels/streams/thumbnails/eE3UYo_y1Y3SpEI-uv9DFA.png",
-			"video": "https://res.cloudinary.com/ds1cdo5lx/video/upload/v1644604064/channels/streams/eE3UYo_y1Y3SpEI-uv9DFA.mp4",
-			"author": "carlososuna11",
-			"created_at": "2022-02-11T14:25:36.115515-04:00",
-			"stopped_at": "2022-02-11T14:27:07.325758-04:00"
-		},
-		{
-			"key": "EprLVq6XNQqovWmB3mPMtw",
-			"thumbnail": "https://res.cloudinary.com/ds1cdo5lx/image/upload/v1644603133/channels/streams/thumbnails/EprLVq6XNQqovWmB3mPMtw.png",
-			"video": "https://res.cloudinary.com/ds1cdo5lx/video/upload/v1644603131/channels/streams/EprLVq6XNQqovWmB3mPMtw.mp4",
-			"author": "carlososuna11",
-			"created_at": "2022-02-11T14:11:11.235100-04:00",
-			"stopped_at": "2022-02-11T15:03:54.574801-04:00"
+			"uid": "HsYSnsjKcngGAKh-oZaAjg",
+			"title": "string",
+			"description": "string",
+			"status": "finished",
+			"thumbnail": "https://res.cloudinary.com/ohaeducation/image/upload/v1646079421/channels/streams/thumbnails/aQL0xb74XB5toZZj6pHD8Q.png",
+			"video": "https://res.cloudinary.com/ohaeducation/video/upload/v1646079407/channels/streams/aQL0xb74XB5toZZj6pHD8Q.mp4",
+			"record": true,
+			"record_status": "done",
+			"is_programed": false,
+			"program_date_time": null,
+			"created_at": "2022-02-28T14:43:37.844942-04:00",
+			"started_at": "2022-02-28T14:43:51.560945-04:00",
+			"ended_at": "2022-02-28T14:44:59.999110-04:00"
 		}
 	]
 }
@@ -83,23 +67,39 @@ Este endpoint retorna una lista de Streams. Los datos de cada stream varia segú
 
 Si está haciendo stream:
 
-| Campo        |   Tipo   | Descripción                                                                                            |
-| :----------- | :------: | :----------------------------------------------------------------------------------------------------- |
-| `key`        | `string` | Identificador único del Stream.                                                                        |
-| `thumbnail`  | `string` | URL de la miniatura del Stream.                                                                        |
-| `video`      | `object` | Objeto que contiene los enlaces de los videos disponibles para el stream (Las diferentes resoluciones) |
-| `author`     | `string` | Nombre del autor del Stream.                                                                           |
-| `chat`       | `string` | URL del chat del Stream.                                                                               |
-| `created_at` | `string` | Fecha de creación del Stream.                                                                          |
-| `stopped_at` | `string` | Fecha de finalización del Stream.                                                                      |
+| Campo               |   Tipo   | Descripción                                                      |
+| :------------------ | :------: | :--------------------------------------------------------------- |
+| `uid`               | `string` | Identificador único del Stream                                   |
+| `key`               | `string` | Clave de acceso al Stream (Solo visible para el autor del canal) |
+| `title`             | `string` | Título del Stream                                                |
+| `description`       | `string` | Descripción del Stream                                           |
+| `status`            | `string` | Estado del Stream                                                |
+| `thumbnail`         | `string` | URL de la miniatura del Stream                                   |
+| `video`             | `string` | URL del video del Stream                                         |
+| `websocket`         | `string` | URL del websocket del Stream                                     |
+| `record`            |  `bool`  | Indica si el Stream está grabando                                |
+| `record_status`     | `string` | Estado de la grabación del Stream                                |
+| `is_programed`      |  `bool`  | Indica si el Stream está programado                              |
+| `program_date_time` | `string` | Fecha y hora de programación del Stream                          |
+| `created_at`        | `string` | Fecha de creación del Stream                                     |
+| `started_at`        | `string` | Fecha de inicio del Stream                                       |
+| `ended_at`          | `string` | Fecha de finalización del Stream                                 |
 
-Si no está en vivo (Luego del Stream)
+En caso de no estar haciendo Stream:
 
-| Campo        |   Tipo   | Descripción                       |
-| :----------- | :------: | :-------------------------------- |
-| `key`        | `string` | Identificador único del Stream.   |
-| `thumbnail`  | `string` | URL de la miniatura del Stream.   |
-| `video`      | `string` | URL del video del Stream          |
-| `author`     | `string` | Nombre del autor del Stream.      |
-| `created_at` | `string` | Fecha de creación del Stream.     |
-| `stopped_at` | `string` | Fecha de finalización del Stream. |
+| Campo               |   Tipo   | Descripción                                                      |
+| :------------------ | :------: | :--------------------------------------------------------------- |
+| `uid`               | `string` | Identificador único del Stream                                   |
+| `key`               | `string` | Clave de acceso al Stream (Solo visible para el autor del canal) |
+| `title`             | `string` | Título del Stream                                                |
+| `description`       | `string` | Descripción del Stream                                           |
+| `status`            | `string` | Estado del Stream                                                |
+| `thumbnail`         | `string` | URL de la miniatura del Stream                                   |
+| `video`             | `string` | URL del video del Stream                                         |
+| `record`            |  `bool`  | Indica si el Stream está grabando                                |
+| `record_status`     | `string` | Estado de la grabación del Stream                                |
+| `is_programed`      |  `bool`  | Indica si el Stream está programado                              |
+| `program_date_time` | `string` | Fecha y hora de programación del Stream                          |
+| `created_at`        | `string` | Fecha de creación del Stream                                     |
+| `started_at`        | `string` | Fecha de inicio del Stream                                       |
+| `ended_at`          | `string` | Fecha de finalización del Stream                                 |
