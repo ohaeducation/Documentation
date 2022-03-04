@@ -70,7 +70,7 @@ Se utiliza para enviar mensajes de chat.
 
 #### Mensaje de Chat
 
-Se utiliza para enviar mensajes de chat.
+Se utiliza para Iniciar sesión.
 
 ```json
 {
