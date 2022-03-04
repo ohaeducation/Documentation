@@ -68,6 +68,19 @@ Se utiliza para enviar mensajes de chat.
 }
 ```
 
+#### Mensaje de Chat
+
+Se utiliza para enviar mensajes de chat.
+
+```json
+{
+    "type": "auth",
+    "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImNhcmxvc29zdW5hMTEiLCJpYXQiOjE2NDUyOTgwMzAsImV4cCI6MTY0NTMwMTYzMCwianRpIjoiOTUzNDYyOTgtODE3Ni00ZDlkLWFkNGUtNWIxM2IyMDM5YjI2IiwidXNlcl9pZCI6NCwib3JpZ19pYXQiOjE2NDUyOTgwMzB9.fZxK7Rxmmc3HwimvsitwFyA_RR8v2XDv0gAxMKh1-rM",
+    }
+}
+```
+
 ### Tipos de Mensajes Recibidos
 
 #### Mensaje de Chat
